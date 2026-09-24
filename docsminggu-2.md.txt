@@ -1,0 +1,55 @@
+docs/minggu-2.md
+1. Tujuan
+Pengerjaan Tugas Minggu 2 ini merupakan kelanjutan dari tugas sebelumnya, dengan fokus penerapan konsep HTTP, REST API, JSON, serta kode status HTTP. Selain itu, dilakukan pengujian API menggunakan Postman. Proyek ini dibangun menggunakan Node.js dan Express, serta dijalankan pada alamat localhost:3000.
+2. Perubahan
+Langkah-langkah yang dilakukan meliputi pembuatan proyek Node.js, pemasangan pustaka Express, dan penulisan berkas server.js sebagai pusat layanan API. Terdapat beberapa titik akhir (endpoint) yang disiapkan untuk mengembalikan berbagai kode status:
+GET /status/200
+GET /status/400
+GET /status/404
+GET /status/429
+3. Endpoint / API Contract
+Table
+Method	Endpoint	Status Code	         	Keterangan
+GET	/status/200	200 OK	                Permintaan berhasil diproses
+GET	/status/400	400 Bad Request		Permintaan tidak sesuai format
+GET	/status/404	404 Not Found		Data atau sumber daya tidak ditemukan
+GET	/status/429	429 Too Many Requests	Terlalu banyak permintaan dalam waktu singkat
+Seluruh respons dikembalikan dalam format JSON dengan struktur yang konsisten.
+4. Bukti Pengujian
+Pengujian dilakukan menggunakan aplikasi Postman Desktop.
+Respons Berhasil
+Permintaan:
+GET http://localhost:3000/status/200
+Respons:
+json
+{
+  "status": 200,
+  "message": "Success"
+}
+Hasil: Kode status 200 OK — permintaan diproses dengan benar dan data dikembalikan sesuai kesepakatan.
+Respons Kesalahan
+Permintaan:
+plaintext
+GET http://localhost:3000/status/400
+Respons:
+json
+{
+  "status": 400,
+  "message": "Bad Request"
+}
+Hasil: Kode status 400 Bad Request — menunjukkan bahwa permintaan yang dikirim tidak dapat diproses karena ada kesalahan pada format atau isi permintaan.
+5. Kasus Kesalahan
+Terdapat beberapa skenario kesalahan yang diuji:
+400 Bad Request — permintaan tidak memenuhi syarat format atau parameter
+404 Not Found — sumber daya yang diminta tidak tersedia di server
+429 Too Many Requests — jumlah permintaan melebihi batas yang ditetapkan
+Setiap skenario dikembalikan dengan pesan yang jelas dan kode status yang sesuai standar, sehingga klien dapat memahami penyebab kegagalan dengan tepat.
+6. Kesimpulan
+Proyek ini berhasil menerapkan konsep dasar HTTP, REST API, JSON, kode status, serta pengujian menggunakan Postman. Server berjalan normal di localhost:3000 dan setiap endpoint mengembalikan respons sesuai dengan kesepakatan dalam API Contract. Hasil pengujian membuktikan bahwa API dapat memberikan respons berhasil maupun respons kesalahan dengan kode status dan struktur data yang benar, konsisten, dan mudah dipahami.
+7. Referensi
+Dokumentasi Resmi Node.js
+Dokumentasi Express.js
+Panduan Penggunaan Postman
+Koleksi Pengujian: Postman Collection — Minggu 2: Eksplorasi HTTP
+8. Deklarasi Penggunaan Kecerdasan Buatan (AI)
+Kecerdasan buatan digunakan hanya sebagai sarana pemahaman konsep, penjelasan materi, dan bantuan mencari referensi terkait topik yang belum sepenuhnya dipahami — termasuk konsep HTTP, REST, JSON, kode status, serta tata cara pengujian di Postman. Penulisan kode program, penyusunan struktur proyek, pelaksanaan pengujian, serta penyusunan narasi laporan dilakukan secara mandiri. Isi dokumen ini tidak disalin begitu saja dari hasil keluaran AI, melainkan disesuaikan dan ditulis kembali dengan pemahaman sendiri.
